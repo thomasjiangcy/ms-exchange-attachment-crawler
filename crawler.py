@@ -2,14 +2,22 @@
 Simple script to crawl through user's MS Exchange inbox to download attachments from emails
 """
 
+import os
+import errno
 from datetime import datetime, timedelta
 from getpass import getpass
-import os
 
-from exchangelib import DELEGATE, Account, Configuration, EWSDateTime, FileAttachment, ItemAttachment, ServiceAccount
 import pytz
+from exchangelib import (
+    DELEGATE, Account, Configuration, EWSDateTime, FileAttachment,
+    ItemAttachment, Message, ServiceAccount
+)
 
-from config import ALLOWED_EXTENSIONS, DOWNLOAD_ATTACHED_EMAILS, DOWNLOAD_ROOT_PATH, OUTGOING_SERVER, RANGE_IN_SECONDS, TIMEZONE
+from config import (
+    ALLOWED_EXTENSIONS, DOWNLOAD_ATTACHED_EMAILS,
+    DOWNLOAD_ROOT_PATH, OUTGOING_SERVER, RANGE_IN_SECONDS,
+    TIMEZONE
+)
 
 
 PARSED_EXTENSIONS = [ext for ext in (x.strip() for x in ALLOWED_EXTENSIONS.split(","))]
