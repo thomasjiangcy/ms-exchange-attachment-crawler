@@ -101,4 +101,4 @@ ENV/
 .mypy_cache/
 
 # VS compiled
-.vs_code/
+.vscode/
